@@ -1,0 +1,358 @@
+/* ─── Variables ───────────────────────────────────────────── */
+:root {
+  --bg:        #0a0c10;
+  --surface:   #111318;
+  --surface2:  #181c24;
+  --bd:        rgba(255,255,255,0.07);
+  --bd2:       rgba(255,255,255,0.13);
+  --green:     #c8f050;
+  --green-dim: rgba(200,240,80,0.10);
+  --amber:     #f0a050;
+  --amber-dim: rgba(240,160,80,0.10);
+  --red:       #f05060;
+  --red-dim:   rgba(240,80,96,0.10);
+  --t1:        #e8eaf0;
+  --t2:        #9098a8;
+  --t3:        #5a6070;
+  --radius:    10px;
+  --safe-top:    env(safe-area-inset-top,    0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ─── Reset ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  background: var(--bg);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--bg);
+  color: var(--t1);
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  min-height: 100dvh;
+  overscroll-behavior: none;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+}
+
+img { display: block; }
+input, select, textarea, button { font-family: inherit; }
+
+/* ─── Layout ───────────────────────────────────────────────── */
+.app {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 16px 14px 48px;
+}
+
+/* ─── Header ────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--bd);
+  margin-bottom: 20px;
+}
+.logo-box {
+  width: 40px; height: 40px;
+  background: var(--green);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 20px;
+  color: var(--bg);
+  flex-shrink: 0;
+}
+.header-text h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; }
+.header-text p  { font-size: 9px; color: var(--t3); letter-spacing: .6px; margin-top: 1px; }
+.online {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 5px;
+  font-size: 10px; color: var(--green); letter-spacing: .5px;
+  white-space: nowrap;
+}
+.online-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+
+/* ─── Cards ─────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--bd);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+/* ─── Section label ─────────────────────────────────────────── */
+.sec {
+  font-size: 10px; color: var(--t3); letter-spacing: .8px;
+  text-transform: uppercase; margin: 0 0 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.sec::after { content:''; flex:1; height:1px; background:var(--bd); }
+.sec-outer { margin-bottom: 4px; }
+
+/* ─── Inputs ────────────────────────────────────────────────── */
+.inp {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--bd2);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: var(--t1);
+  font-size: 13px;
+  outline: none;
+  transition: border-color .2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.inp:focus { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-dim); }
+.inp-ta    { resize: vertical; min-height: 64px; }
+.field-group { margin-bottom: 12px; }
+
+/* ─── Label ─────────────────────────────────────────────────── */
+.lbl { display: block; font-size: 10px; color: var(--t3); letter-spacing: .7px; text-transform: uppercase; margin-bottom: 5px; }
+
+/* ─── Chip selector ─────────────────────────────────────────── */
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  background: var(--surface2);
+  border: 1px solid var(--bd2);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 11px;
+  color: var(--t2);
+  cursor: pointer;
+  transition: all .15s;
+}
+.chip:active { transform: scale(.96); }
+.chip-on {
+  background: var(--green-dim);
+  border-color: rgba(200,240,80,.35);
+  color: var(--green);
+}
+
+/* ─── Two column grid ───────────────────────────────────────── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+
+/* ─── Botones ───────────────────────────────────────────────── */
+.btn-primary {
+  width: 100%;
+  background: var(--green);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity .2s, transform .1s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-primary:active { opacity: .85; transform: scale(.98); }
+
+.btn-ghost {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--bd2);
+  border-radius: 8px;
+  color: var(--t2);
+  font-size: 12px;
+  padding: 11px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background .2s;
+}
+.btn-ghost:active { background: var(--surface2); }
+
+/* ─── Error ─────────────────────────────────────────────────── */
+.err-box {
+  background: var(--red-dim);
+  border: 1px solid rgba(240,80,96,.25);
+  border-radius: 7px;
+  padding: 10px 12px;
+  color: var(--red);
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+/* ─── Loading ───────────────────────────────────────────────── */
+.load-track {
+  background: var(--surface2);
+  border-radius: 4px;
+  height: 3px;
+  margin: 14px 0 10px;
+  overflow: hidden;
+}
+.load-bar {
+  height: 100%;
+  background: var(--green);
+  border-radius: 4px;
+  animation: ldb 2.5s ease-in-out infinite;
+}
+@keyframes ldb { 0%{width:4%} 60%{width:88%} 100%{width:96%} }
+
+/* ─── Match header ──────────────────────────────────────────── */
+.match-head   { margin-bottom: 12px; }
+.match-teams  {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px;
+  flex-wrap: wrap; line-height: 1.3;
+}
+.vs     { color: var(--t3); font-size: 12px; margin: 0 2px; }
+.match-meta { font-size: 11px; color: var(--t3); margin-top: 5px; display: flex; align-items: center; }
+
+/* ─── Confidence badge ──────────────────────────────────────── */
+.conf-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 11px; font-family: 'Syne', sans-serif; font-weight: 700;
+  margin-top: 10px;
+}
+
+/* ─── Predicción box ────────────────────────────────────────── */
+.pred-box {
+  background: var(--surface2);
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 12px;
+}
+.pred-title  { font-size: 10px; color: var(--t3); letter-spacing: .7px; text-transform: uppercase; margin-bottom: 6px; }
+.pred-advice { font-size: 12px; color: var(--t2); margin-bottom: 8px; }
+.pred-pcts   { display: flex; gap: 16px; }
+.pct-item    { text-align: center; }
+.pct-val     { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; }
+.pct-lbl     { font-size: 10px; color: var(--t3); margin-top: 2px; }
+
+/* ─── Team card ─────────────────────────────────────────────── */
+.team-card {
+  background: var(--surface2);
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  padding: 12px;
+}
+.tc-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.tc-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; }
+.tc-sub  { font-size: 10px; color: var(--t3); }
+
+/* ─── Forma dots ────────────────────────────────────────────── */
+.form-strip { display: flex; gap: 4px; margin: 6px 0; }
+.fdot {
+  width: 24px; height: 24px; border-radius: 5px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; font-family: 'Syne', sans-serif;
+}
+.fw { background: rgba(200,240,80,.15); color: var(--green); border: 1px solid rgba(200,240,80,.3); }
+.fd { background: rgba(144,152,168,.12); color: var(--t2);   border: 1px solid rgba(144,152,168,.2); }
+.fl { background: rgba(240,80,96,.15);  color: var(--red);  border: 1px solid rgba(240,80,96,.25); }
+
+/* ─── Stat row ──────────────────────────────────────────────── */
+.sr {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 5px 0; border-bottom: 1px solid var(--bd); font-size: 12px;
+}
+.sr:last-child { border-bottom: none; }
+.sk { color: var(--t2); }
+.sv { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 12px; }
+
+/* ─── Tabla últimos 5 ───────────────────────────────────────── */
+.t5 { width: 100%; border-collapse: collapse; font-size: 11px; }
+.t5 th { color: var(--t3); font-weight: 400; text-align: left; padding: 3px 4px; font-size: 9px; letter-spacing: .4px; text-transform: uppercase; border-bottom: 1px solid var(--bd); }
+.t5 td { padding: 5px 4px; border-bottom: 1px solid rgba(255,255,255,.04); color: var(--t2); }
+.t5 tr:last-child td { border-bottom: none; }
+.res-W { color: var(--green); font-weight: 700; }
+.res-D { color: var(--t2); }
+.res-L { color: var(--red); font-weight: 700; }
+
+/* ─── Cuotas ────────────────────────────────────────────────── */
+.odds-header {
+  display: grid; grid-template-columns: 90px 1fr 1fr 1fr;
+  gap: 6px; padding-bottom: 8px; border-bottom: 1px solid var(--bd);
+}
+.oh { text-align: center; font-size: 9px; color: var(--t3); letter-spacing: .4px; }
+.odds-row {
+  display: grid; grid-template-columns: 90px 1fr 1fr 1fr;
+  gap: 6px; padding: 7px 0; border-bottom: 1px solid var(--bd); align-items: center;
+}
+.odds-row:last-of-type { border-bottom: none; }
+.odds-row-best .book-name { color: var(--green); font-weight: 700; }
+.book-name { font-size: 11px; color: var(--t2); }
+.oc {
+  text-align: center;
+  background: var(--surface2);
+  border-radius: 5px;
+  padding: 5px 4px;
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px;
+  color: var(--t1);
+}
+.oc-best {
+  color: var(--green);
+  border: 1px solid rgba(200,240,80,.3);
+  background: rgba(200,240,80,.06);
+}
+.best-tip {
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--green);
+  padding-top: 8px;
+  border-top: 1px solid var(--bd);
+}
+
+/* ─── Recomendación ─────────────────────────────────────────── */
+.rec-box {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 14px;
+}
+.rec-pick-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.rec-pick     { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 17px; }
+.rec-stake    { font-size: 11px; color: var(--t3); }
+.conf-bar-wrap { background: rgba(255,255,255,.06); border-radius: 4px; height: 4px; margin: 8px 0 10px; }
+.conf-bar      { height: 100%; border-radius: 4px; transition: width 1s ease; }
+.rec-resumen   { font-size: 12px; color: var(--t1); margin-bottom: 8px; line-height: 1.6; font-style: italic; }
+.rec-razon     { font-size: 12px; color: var(--t2); line-height: 1.7; }
+.rec-ev        { margin-top: 8px; font-size: 11px; font-family: 'Syne', sans-serif; font-weight: 700; color: var(--green); }
+.rec-alerta    { font-size: 11px; color: var(--amber); margin-top: 5px; }
+
+/* ─── Picks alt ─────────────────────────────────────────────── */
+.alt-row     { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; }
+.alt-mercado { font-size: 12px; color: var(--t2); }
+.alt-right   { display: flex; gap: 10px; align-items: center; }
+.alt-cuota   { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--green); }
+.alt-conf    { font-size: 11px; color: var(--t3); }
+
+/* ─── Disclaimer ────────────────────────────────────────────── */
+.disclaimer {
+  background: var(--amber-dim);
+  border: 1px solid rgba(240,160,80,.2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 11px;
+  color: var(--amber);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+/* ─── Animaciones ───────────────────────────────────────────── */
+@keyframes pulse  { 0%,100%{opacity:1} 50%{opacity:.25} }
+.pulse { animation: pulse 2s infinite; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+.anim-in { animation: fadeIn .35s ease; }
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .two-col         { grid-template-columns: 1fr; }
+  .match-teams     { font-size: 14px; }
+  .odds-header,
+  .odds-row        { grid-template-columns: 70px 1fr 1fr 1fr; }
+  .book-name       { font-size: 10px; }
+  .oc              { font-size: 12px; padding: 4px 2px; }
+}
