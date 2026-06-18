@@ -142,7 +142,7 @@ async function claudeAnalysis(payload) {
       messages: [{ role: "user", content: userMsg }]
     })
   });
-  if (!res.ok) throw new Error("Anthropic error: " + res.status);
+  if (!res.ok) const errBody = await res.json().catch(() => ({})); throw new Error("Anthropic error: " + res.status + " — " + JSON.stringify(errBody));
   const data = await res.json();
   const raw  = (data.content || []).map(b => b.text || "").join("").trim();
   const s = raw.indexOf("{"), e = raw.lastIndexOf("}");
